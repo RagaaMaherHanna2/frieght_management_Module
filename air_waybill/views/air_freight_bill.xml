@@ -1,0 +1,79 @@
+<odoo>
+  <data>
+
+     <!--  Air freight bill -->
+      <record id="Air_freight_bill_form" model="ir.ui.view">
+          <field name="name">Air freight bill Form</field>
+          <field name="model">account.invoice</field>
+          <field name="inherit_id" ref="account.invoice_form"/>
+          <field name="view_type">tree, form</field>
+          <field name="arch" type="xml">
+              <field name="partner_id" position="after">
+                  <field name="account_to"/>
+                  <field name="hawb_afb_ID"/>
+                  <field name="afb_no_of_pieces"/>
+              </field>
+              <field name="user_id" position="after">
+                  <field name="mawb_a"/>
+                  <field name="afb_weight"/>
+              </field>
+
+
+
+          </field>
+
+
+      </record>
+
+      <record model="ir.ui.view" id="Air_freight_bill_tree">
+          <field name="name">Air freight bill Form</field>
+          <field name="model">account.invoice</field>
+          <field name="inherit_id" ref="account.invoice_tree"/>
+          <field name="arch" type="xml">
+                <tree decoration-info="state == 'draft'" decoration-muted="state == 'cancel'" string="Invoice">
+                    <field name="partner_id" groups="base.group_user" string="Customer"/>
+                    <field name="date_invoice"/>
+                    <field name="number"/>
+                    <field name="commercial_partner_id" invisible="1"/>
+                    <field name="reference" invisible="1"/>
+                    <field name="name" invisible="1"/>
+                    <field name="journal_id" invisible="1"/>
+                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                    <field name="user_id"/>
+                    <field name="date_due"/>
+                    <field name="origin"/>
+                    <field name="amount_total_signed" string="Total" sum="Total"/>
+                    <field name="residual_signed" string="Amount Due" sum="Amount Due"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="company_currency_id" invisible="1"/>
+                    <field name="state"/>
+                    <field name="type" invisible="context.get('type',True)"/>
+                </tree>
+          </field>
+      </record>
+
+      <!--record id="air_freight_bill_action" model="ir.actions.act_window">
+            <field name="name"> Air Freight Bill </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.invoice</field>
+
+            <field name="help" type="html">
+
+                <p class="oe_view_nocontent_create">
+                    Click to create Air Freight Bill
+                </p>
+            </field>
+        </record>
+
+      <menuitem name="Air Freight Bill"
+              id="air_freight_bill_menuitem"
+              parent="mawb_menu_root"/>
+
+      <menuitem name="Air Freight Bill"
+              id="air_freight_bill_menulist"
+              parent="mawb_menuitem"
+              action="air_freight_bill_action"/-->
+
+
+  </data>
+</odoo>
